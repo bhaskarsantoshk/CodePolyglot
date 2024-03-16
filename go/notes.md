@@ -20,3 +20,23 @@
 - Network communication, concurrency, and parallelization support
 - Fast building speed
 - Efficient memory management
+
+- 
+
+# Typical Go
+
+- Filenames consist of small letters with .go extension, can have underscores (_)
+- 25 reserved key words ( example: chan, const, defer, fallthrough, go, select , etc. )
+- 36 pre-declared identifiers ( example: bool, copy, real, close, cap, int, real, recover, etc. )
+- Go is case-sensitive
+- _ is a blank identifier
+- functions can be anonymous ( no name functions )
+- No need to end every line with `;` , however if we write two statements in one line, we need to use `;`
+- Every go file belongs to only one package , a package can comprise of many go files. File name and package name are generally not the same
+- first line has to be the package name the go file belongs to
+- A standalone executable belongs to `main` package. Even if you use one package, you can divide go functionality with smaller files that all belong to package `main`
+- By convention, each directory contains one package, the package is compiled as one unit.
+- To build a program, the packages , files within will be compiled in the correct order. package dependencies determine the order
+- To import a package and it’s functionality into go file - use `import pkg_name` - This will load the public declarations from the compiled package
+- Identifiers of code-object in a package have to be unique. Same identifiers can be used in different packages. ( pkg1.Object and pkg2.Object )
+- If an identifier starts with upper case letter, it is said to be exported and will be available outside the package
