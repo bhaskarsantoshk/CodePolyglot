@@ -82,3 +82,50 @@ print "\n";
 * While loop: Calculates and prints the sum of the numbers in the array.
 * Do-while loop: Iterates through the array and prints each number doubled.
 * The until loop is similar to the while loop, but it continues until the condition becomes true.
+
+* Pass by reference
+
+```Perl
+sub swap{ #parameters num1 and num2 passed using pass by value method 
+
+  $temp = $_[0];   #creating a variable temp and setting equal to $_[0]
+  $_[0] = $_[1];  #setting the value of $_[0] equal to $_[1]
+  $_[1] = $temp;  #setting the value of $_[1] equal to temp which is equal to $_[0]
+}
+
+$num1 = 4;
+$num2 = 5;
+
+# Have a careful look at this function call
+print "num1 is: $num1\n";
+print "num2 is: $num2\n";
+print "\nAfter swapping\n\n";
+
+swap($num1,$num2);
+print "num1 is: $num1\n";
+print "num2 is: $num2";
+```
+
+* Pass by value
+``` Perl
+sub swap{ #parameters num1 and num2 passed using pass by value method 
+  my $a = @_[0];
+  my $b = @_[1];
+  
+  my $temp = $a;   #creating a variable temp and setting equal to arg2
+  $a = @_[1];  #setting the value of arg2 equal to arg1
+  $b = $temp;  #setting the value of arg1 equal to temp which is equal to arg2
+}
+
+$num1 = 4;
+$num2 = 5;
+
+# Have a careful look at this function call
+print "num1 is: $num1\n";
+print "num2 is: $num2\n";
+print "\nAfter swapping\n\n";
+
+swap($num1,$num2);
+print "num1 is: $num1\n";
+print "num2 is: $num2";
+```
