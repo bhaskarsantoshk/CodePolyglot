@@ -125,7 +125,10 @@ print "num1 is: $num1\n";
 print "num2 is: $num2\n";
 print "\nAfter swapping\n\n";
 
+
 swap($num1,$num2);
 print "num1 is: $num1\n";
 print "num2 is: $num2";
 ```
+* The default usage of the sort() subroutine is to sort the array of strings. If we use it with numbers, then the numbers will be treated as strings.
+* Packages are the blueprints of objects. A package is a user-defined data type, which includes local methods/subroutines and local variables.
