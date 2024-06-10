@@ -21,8 +21,6 @@
 - Fast building speed
 - Efficient memory management
 
-- 
-
 # Typical Go
 
 - Filenames consist of small letters with .go extension, can have underscores (_)
@@ -56,3 +54,12 @@
 - `var identifier type`
 - `var identifier type = value`
 - `var num int = 5` , `var num = 5` and `num := 5` are all same
+
+## Go commands
+
+* `go build` - Compiles the packages.
+* `go run` - Compiles and runs Go programs.
+* `go fmt` - Formats Go source code.
+* `go install` - Compiles and installs packages and dependencies.
+* `go get` - Downloads and installs packages and dependencies.
+* `go test` - Runs tests for the specified packages.
