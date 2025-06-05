@@ -58,4 +58,7 @@ func main() {
     fmt.Println("Updated Slice:", slice)
 }
 ```
+## functions
+* entire block of code as a variable
 
+* parameters ( information can be passed into functions as local variables/ or sometimes addresses )

@@ -13,4 +13,11 @@ func main() {
 	for _, task := range moreTasks {
 		fmt.Println(task)
 	}
+	printTasks(moreTasks)
+}
+
+func printTasks(tasks []string) {
+	for index, task := range tasks {
+		fmt.Printf("%d - %s\n", index+1, task)
+	}
 }
