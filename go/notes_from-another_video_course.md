@@ -33,3 +33,29 @@
 * GOROOT - where the Go sdk is installed
 * GPATH - workspace for Go projects and packages
 
+## Arrays vs Slices
+* fixed size and variable size
+* array: moreTasks := [10]string{"go APIs", "go routines", "go channels"}
+* slice : moreTasks := []string{"go APIs", "go routines", "go channels"}
+
+Example:
+```go
+package main
+
+import "fmt"
+
+func main() {
+    // Array: fixed size
+    var arr = [3]string{"go APIs", "go routines", "go channels"}
+    fmt.Println("Array:", arr)
+
+    // Slice: dynamic size
+    slice := []string{"go APIs", "go routines"}
+    fmt.Println("Initial Slice:", slice)
+
+    // Append an element to the slice
+    slice = append(slice, "go channels")
+    fmt.Println("Updated Slice:", slice)
+}
+```
+
