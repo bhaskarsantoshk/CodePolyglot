@@ -29,3 +29,7 @@
 - **Fast build, startup, and runtime**
 - **Compiles quickly into a single static binary**
 
+## Setup
+* GOROOT - where the Go sdk is installed
+* GPATH - workspace for Go projects and packages
+
