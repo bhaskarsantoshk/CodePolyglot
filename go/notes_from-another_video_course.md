@@ -17,3 +17,15 @@
 
 * For high-performance applications
 * Running on large-scale, distributed systems
+
+## Key Characteristics
+
+- **Simple, readable syntax** like dynamically typed languages (e.g., Python)
+- **Efficiency and safety** of statically typed, lower-level languages (e.g., C++)
+- Designed for **server-side use**: microservices, web apps, and database services
+- Powers modern infrastructure tools like **Docker**, **Kubernetes**, etc.
+- **Minimalist syntax**, easy to learn and write
+- **Resource efficient** and performant
+- **Fast build, startup, and runtime**
+- **Compiles quickly into a single static binary**
+
