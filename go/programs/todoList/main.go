@@ -14,10 +14,18 @@ func main() {
 		fmt.Println(task)
 	}
 	printTasks(moreTasks)
+
+	moreTasks = addTask("go grpc", moreTasks) // capture the returned slice
+	printTasks(moreTasks)
 }
 
 func printTasks(tasks []string) {
 	for index, task := range tasks {
 		fmt.Printf("%d - %s\n", index+1, task)
 	}
+}
+
+func addTask(newTask string, tasks []string) []string {
+	tasks = append(tasks, newTask)
+	return tasks
 }
