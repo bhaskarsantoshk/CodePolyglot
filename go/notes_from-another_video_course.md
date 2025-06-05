@@ -58,7 +58,86 @@ func main() {
     fmt.Println("Updated Slice:", slice)
 }
 ```
-## functions
-* entire block of code as a variable
+## Functions
 
-* parameters ( information can be passed into functions as local variables/ or sometimes addresses )
+* Functions in Go are first-class citizens – you can assign them to variables, pass them as arguments, and return them from other functions.
+* They are defined using the `func` keyword.
+* Parameters can be passed by value (copy) or by reference (using pointers).
+* Syntax:
+  ```go
+  func functionName(param1 type1, param2 type2) returnType {
+      // function body
+  }
+  ```
+
+* Example of assigning a function to a variable:
+  ```go
+  package main
+
+  import "fmt"
+
+  func greet(name string) string {
+      return "Hello, " + name
+  }
+
+  func main() {
+      // Assigning function to a variable
+      var sayHello func(string) string = greet
+      fmt.Println(sayHello("Go"))
+  }
+  ```
+## Web in Go
+
+Go provides powerful support for web development through its standard `net/http` package, without needing external frameworks.
+
+### Key Features
+
+- Lightweight and efficient HTTP server  
+- Built-in concurrency (each request is handled in a separate goroutine)  
+- Ideal for REST APIs, static content, and microservices
+
+### Core Components
+
+- `http.HandleFunc(pattern, handler)`  
+  Maps a URL path to a handler function.
+
+- `http.ListenAndServe(addr, handler)`  
+  Starts the HTTP server on the specified address.
+
+### Handler Function Signature
+
+```go
+func(w http.ResponseWriter, r *http.Request)
+```
+
+- `http.ResponseWriter` is used to send responses.  
+- `*http.Request` contains request details like method, headers, URL, etc.
+
+### Minimal Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    http.HandleFunc("/", helloUser)
+
+    fmt.Println("Server running at http://localhost:8080")
+    http.ListenAndServe(":8080", nil)
+}
+
+func helloUser(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "Hello, Web in Go!")
+}
+```
+
+### Notes
+
+- The `nil` in `ListenAndServe` uses the default ServeMux (router).
+- You can register multiple handlers for different paths like `/login`, `/home`, etc.
+- For larger apps, use custom routers or frameworks like `gorilla/mux` (optional).
+
