@@ -53,4 +53,82 @@ Amazon DynamoDB is a fully managed NoSQL database that supports both key-value a
 To consider with DynamoDB:
 - Not suitable for complex queries or joins; best for simple key-based access patterns.
 - Data retrieval is efficient only by primary key or defined indices; querying by non-key attributes is limited and slow.
-- Not designed for storing large binary objects (blobs) such as
+- Not designed for storing large binary objects (blobs) such as as images or videos.
+
+## Data Model
+
+- **Tables:** The fundamental data store in DynamoDB. You can have multiple tables, similar to relational databases. However, DynamoDB tables are schema-less, so there is no fixed column structure—any item can have any attributes, as long as the primary key is unique.
+- **Items:** Analogous to rows in relational databases. Each item belongs to a table and can have multiple attributes. Items are often represented as JSON objects (collections of key-value pairs).
+- **Attributes:** Each key-value pair within an item is called an attribute. Attributes are like properties of the item and can be of various scalar or composite data types.
+
+### Primary Key
+
+Each table must have a primary key, which uniquely identifies every item and is used internally for partitioning and storage. There are two types of primary keys:
+
+- **Partition key:** A single unique attribute (string, number, or boolean) that determines the partition where the item is stored.
+- **Partition key and Sort key:** A composite key with two attributes. The partition key determines the partition, and the sort key determines the order within that partition. The combination of both must be unique, though individually they may not be.
+
+Let’s look at an example of items in a table
+```
+// Example of an item in a fictional "Orders" table
+{
+    "order_id": "ORD20250913-001",
+    "customer_id": "CUST12345",
+    "order_date": "2025-09-13T14:30:00Z",
+    "status": "Delivered",
+    "total_amount": 620,
+    "currency": "USD",
+    "items": [
+        {
+            "product_id": "P1001",
+            "name": "Wireless Mouse",
+            "price": 200,
+            "quantity": 2
+        },
+        {
+            "product_id": "P2002",
+            "name": "Mechanical Keyboard",
+            "price": 220,
+            "quantity": 1
+        }
+    ],
+    "shipping_address": {
+        "street": "123 Main St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94105"
+    }
+}
+
+{
+    "order_id": "ORD20250913-002",
+    "customer_id": "CUST67890",
+    "order_date": "2025-09-13T16:00:00Z",
+    "status": "Completed",
+    "total_amount": 350,
+    "currency": "JPY",
+    "service": "Parking",
+    "parking_details": {
+        "location": "Shibuya Parking Lot",
+        "duration_hours": 5,
+        "vehicle_number": "AB-1234"
+    }
+}
+```
+In the above examples, each item in the "Orders" table is uniquely identified by its `order_id`, which serves as the primary key (partition key). To retrieve these items from DynamoDB, you would typically use a `GetItem` or `Query` operation specifying the primary key value.
+
+For example:
+- To fetch the first order, you would query the table with `order_id = "ORD20250913-001"`.
+- To fetch the second order, you would query with `order_id = "ORD20250913-002"`.
+
+Since DynamoDB is optimized for primary key lookups, these queries are efficient and return the exact item matching the given key. If a sort key is also defined, you would provide both the partition key and sort key values to retrieve a specific item.
+
+### Data Types
+
+DynamoDB supports three main categories of data types:
+
+- **Scalar:** Includes String (`S`), Number (`N`), Boolean (`BOOL`), Null, and Binary (`B`). Binary is used for storing images, documents, or encrypted messages, but when used as a primary key, its size must not exceed 2048 bytes (applies to both single and composite keys).
+- **Document:** Includes Map (a collection of key-value pairs) and List (an ordered collection of values), allowing for complex and nested data structures.
+- **Set:** Includes String Set (`SS`), Number Set (`NS`), and Binary Set (`BS`), which store unique collections of their respective types.
+
+Each type allows DynamoDB to efficiently store and retrieve both simple and complex data structures within
