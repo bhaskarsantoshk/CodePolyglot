@@ -29,4 +29,28 @@ NoSQL databases are designed to handle large volumes of unstructured, semi-struc
 - Flexible schemas allow easy handling of evolving and unstructured data.
 - High scalability and performance for large-scale, distributed applications.
 - Better suited for Agile development and frequent schema changes.
-- Can efficiently store and query complex or hierarchical
+- Can efficiently store and query complex or hierarchical data structures
+
+## DynamoDB
+
+Amazon DynamoDB is a fully managed NoSQL database that supports both key-value and document data models. It delivers single-digit millisecond performance at any scale and is designed for high availability with multi-region, multi-active replication. DynamoDB includes built-in security, automated backup and restore, and in-memory caching, making it ideal for internet-scale applications.
+
+**Features**  
+- Fully managed: No need to manage servers or software updates—just focus on your data.
+- High performance: Consistently delivers single-digit millisecond latency, even at massive scale.
+- Scalable: Automatically scales to handle large numbers of requests using a distributed architecture and consistent hashing.
+- Durable and highly available: Provides high availability with eventual consistency for reads; data becomes consistent within milliseconds.
+- Cost effective: Charges only for the capacity you use, with no separate storage costs—pricing is based on throughput units.
+- Flexible/schema-less: The only requirement is a unique primary key for each item. You can store any data structure, which is useful for Agile development. However, access patterns must be planned, as queries are efficient only by primary key or indices; scanning by other attributes is slow and
+
+**Fully Managed by AWS** :  
+- Automatic software updates and security patches are handled by AWS.
+- DynamoDB is serverless, so there is no need to manage hardware or infrastructure.
+- Data is automatically partitioned and horizontally scaled across multiple servers. AWS manages partitioning and re-partitioning seamlessly as servers are added or removed, with no downtime.
+- Data replication for durability is managed under the hood, ensuring high availability without manual intervention.
+- Tables are set to auto-scaling by default, so throughput units adjust automatically with changing workloads, providing seamless scaling and
+
+To consider with DynamoDB:
+- Not suitable for complex queries or joins; best for simple key-based access patterns.
+- Data retrieval is efficient only by primary key or defined indices; querying by non-key attributes is limited and slow.
+- Not designed for storing large binary objects (blobs) such as
